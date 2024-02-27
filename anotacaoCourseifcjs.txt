@@ -1,0 +1,109 @@
+Ter npm instalado (google)
+npm init -y = inicia o projeto
+npm i vite --save-dev = instala o vite
+"scripts": {"dev": "vite"},
+npm run dev = mostra o projeto no navegador
+pasta src, onde fica os arquivos js
+npm i three@0.152.2 --save-exact
+npm i @types/three@0.156.0 --save-dev --save-exact
+npm i openbim-components@1.1.5 --save-exact
+npm i bim-fragment@1.0.22 --save-dev
+
+link com tutorials
+https://docs.thatopen.com/intro
+
+PARTE DO THREE.JS QUE VAI SER APAGADA:
+// //THREE JS VIEWER
+// //CENA
+// //criando a cena
+// const scene = new THREE.Scene()
+
+// //CAMERA
+// //pegando o valor do elemento onde vai ser exibido o desenho 3D para poder posicionar melhor a camera
+// const viewerContainer = document.querySelector('#viewer-container') as HTMLElement
+// const containerDimensions = viewerContainer.getBoundingClientRect()
+// const aspectRatio = containerDimensions.width / containerDimensions.height
+// //criando a camera
+// const camera = new THREE.PerspectiveCamera(75, aspectRatio)
+// //para que a camera não fique grudada no objeto
+// camera.position.z = 4
+// camera.position.x = 3
+
+// //RENDERIZADOR
+// //criando o renderer, oque faz renderizar a imagem 3d, a cena e a camera
+// //{alpha: true}, deixa o background da cena transparente, {antialias: true}, deixa o objeto mais liso
+// const renderer = new THREE.WebGLRenderer({alpha: true, antialias: true})
+// viewerContainer.append(renderer.domElement)
+// //passando as dimensões da div para o renderer saber o tamanho que tem que renderizar
+// renderer.setSize(containerDimensions.width, containerDimensions.height)
+// //fazendo com que fique responsivo
+// window.addEventListener('resize', () => {
+//     const containerDimensions = viewerContainer.getBoundingClientRect()
+//     renderer.setSize(containerDimensions.width, containerDimensions.height)
+//     const aspectRatio = containerDimensions.width / containerDimensions.height
+//     camera.aspect = aspectRatio
+//     camera.updateProjectionMatrix()
+//     //não esquecer de colocar style="min-width: 0;" no container viewer
+// })
+
+// //LUZ
+// //criando a luz do ambiente (sem luz fica tudo preto)
+// const directionalLight = new THREE.DirectionalLight()
+// const ambientLight = new THREE.AmbientLight()
+// ambientLight.intensity = 0.4
+// //adicionando a luz a cena
+// scene.add(directionalLight, ambientLight)
+
+// //CUBO
+// //criando o cubo
+// const geometry = new THREE.BoxGeometry()
+// const material = new THREE.MeshStandardMaterial()
+// const cube = new THREE.Mesh(geometry, material)
+// //adicionando o cubo na cena
+// // scene.add(cube)
+
+// //CONTROLE DE ÓRBITA
+// //criando o controle por orbita que o usuário vai ter
+// const cameraControls = new OrbitControls(camera, viewerContainer)
+
+// //SUPORTES
+// //criando o Axes, setas em cada eixo
+// const axes = new THREE.AxesHelper()
+// //criando a grid (plano cartesiano)
+// const grid = new THREE.GridHelper()
+// grid.material.transparent = true
+// grid.material.opacity = 0.4
+// grid.material.color = new THREE.Color('#808080')
+// scene.add(axes, grid)
+// //GUI = suporte que permite o usuário alterar os valores dos elementos
+// const gui = new GUI()
+// const cubeControls = gui.addFolder('Cube')
+// cubeControls.add(cube.position, 'x', -10, 10, 1)
+// cubeControls.add(cube.position, 'y', -10, 10, 1)
+// cubeControls.add(cube.position, 'z', -10, 10, 1)
+// //-10 é o valor menor valor possível, o 10 é o maior valor possível, e 1 é de quanto em quanto vai
+// //permite o usuário alterar a cor do cubo
+// cubeControls.addColor(cube.material, 'color')
+// //permite o usuário deixar o cubo invisivel ou não
+// cubeControls.add(cube, 'visible')
+
+// //Carregando um arquivo obj e usando as cores e o material dele
+// const objLoard = new OBJLoader()
+// objLoard.load('../assets/Gear/Gear1.obj', (mesh) => {
+//     scene.add(mesh)
+// })
+// const mtlLoader = new MTLLoader()
+// mtlLoader.load('../assets/Gear/Gear1.mtl', (materials) => {
+//     materials.preload()
+//     objLoard.setMaterials(materials)
+// })
+
+// //RENDERIZAR CONTEUDO
+// //função que faz com que fique atualizando a cena, assim funcionando a visão em órbita
+// function rendererScene(){
+//     //renderiza tudo que foi feito dentro da cena e da camera
+//     renderer.render(scene, camera)
+//     //chama a mesma função novamente para assim gerar um loop infinito
+//     requestAnimationFrame(rendererScene)
+// }
+// rendererScene()

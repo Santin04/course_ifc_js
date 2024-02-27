@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap');
+
+/* Predefinindo padrões para não ter que repetir o valor todo momento */
+/* Mais fácil também na hora de fazer manutenção do site */
+:root {
+    --primary: #029AE0;
+    --primary-100: #073044;
+    --primary-200: #415A66;
+    --primary-300: #017CB3;
+    --primary-400: #50B6E6;
+    --background: #202124;
+    --background-100: #26282b;
+    --background-200: #3b3c3f;
+    --font-size-small: 8px;
+    --font-size-medium: 14px;
+    --font-size-big: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* fr = fração, se tiver só 1fr, ele vai ocupar 1 de 1, agora se tiver 1fr 1fr, cada um vai ocupar 1 de 2 */
+body {
+    display: grid;
+    grid-template-columns: 300px 1fr; /* definindo o tamanho dos elementos */
+    grid-template-areas: 'sidebar content'; /* elementos que vão aderir o tamanho acima */
+    height: 100vh;
+    background-color: var(--background);
+    color: #fff;
+}
+
+/* GENERAL STYLE */
+button {
+    padding: 8px 15px;
+    cursor: pointer;
+    height: 40px;
+    font-size: var(--font-size-medium);
+    background-color: var(--primary);
+    color: white;
+    border-radius: 100px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+button:hover {
+    background-color: var(--primary-400);
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+} 
+
+/* SIDEBAR */
+#sidebar {
+    background-color: var(--background-100);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}
+
+#company-logo {
+    height: 65px;
+}
+
+#nav-buttons {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+#nav-buttons li {
+    list-style-type: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: var(--font-size-medium);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#nav-buttons li:hover {
+    background-color: var(--primary);
+}
+
+/* CONTENT */
+#projects-page{
+    display: flex;
+}
+
+header {
+    padding: 30px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.project-card {
+    background-color: var(--background-100);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    outline: 2px solid var(--primary); /*Uma linha envolta semelhante a borda*/
+}
+
+.card-header {
+    display: flex;
+    column-gap: 20px;
+    padding: 15px 20px;
+    align-items: center;
+    justify-content: start;
+    border-bottom: 2px solid #3b3c3f;
+    height: 60px;
+}
+
+.card-content {
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+}
+
+.card-property {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#projects-list {
+    display: grid;
+    padding: 20px 40px;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    /* auto-fill = cria o máximo de colunas possíveis com o tamanho mínimo */
+    /* minmax(x, x) tamanho minimo e maximo do cada coluna */
+}
+
+/* FORM STYLES */
+dialog {
+    background-color: transparent;
+    border: none;
+    margin: auto;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+form {
+    width: 450px;
+    border-radius: 10px;
+    background-color: var(--background-100);
+    color: white;
+}
+
+form h2 {
+    padding: 20px;
+    border-bottom: 2px solid var(--background-100);
+}
+
+form .input-list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    row-gap: 25px;
+}
+
+form .form-field-container {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: var(--font-size-medium);
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: rgba(150, 150, 150, 1);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+input, textarea, select {
+    color: white;
+    background-color: var(--background-200);
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    font-size: var(--font-size-medium);
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: 2px solid var(--primary);
+}
+
+#form-buttons {
+    padding: 20px;
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+}
+
+#button-cancel {
+    background-color: var(--background-100);
+}
+
+#button-cancel:hover {
+    outline: 1px solid var(--primary);
+}
+
+#button-accept {
+    background-color: green;
+}
+
+#button-accept:hover {
+    background-color: darkgreen;
+}
+
+/* PROJECTS DETAILS PAGE */
+#projects-details {
+    display: none;
+}
+
+.dashboard-card {
+    background-color: var(--background-100);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+#projects-details > .main-page-content {
+    display: grid;
+    padding: 20px 40px;
+    gap: 30px;
+    grid-template-columns: 475px 1fr;
+    height: 100%;
+}
+
+.btn-secondary {
+    background-color: var(--background-100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    outline: 2px solid white;
+    font-size: var(--font-size-medium);
+}
+
+.btn-secondary:hover {
+    background-color: var(--background-200);
+}
+
+.todo-item {
+    padding: 20px;
+    background-color: var(--background-200);
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.todo-item:hover {
+    background-color: var(--primary);
+}
